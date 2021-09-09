@@ -1,0 +1,28 @@
+// Breaking points for Mobile nd Tablet
+// @media only screen and (max-width: 771px) {
+//     .nav-container {
+//       height: 30vh;
+//       display: block;
+//       .logo-lft {
+//         text-align: center;
+//       }
+//       .logo-rgt {
+//         border: none;
+//         display: none;
+//       }
+//     }
+
+//     .nav-menu .nav-lists {
+//       @include flexDisplay(flex, center, center, column);
+
+//       .item a {
+//         display: block;
+//         padding: 5px;
+//         width: 100%;
+//         margin: 0;
+//         &:hover {
+//           color: $colorMain;
+//         }
+//       }
+//     }
+//   }
