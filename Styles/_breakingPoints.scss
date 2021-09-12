@@ -1,28 +1,183 @@
-// Breaking points for Mobile nd Tablet
-// @media only screen and (max-width: 771px) {
-//     .nav-container {
-//       height: 30vh;
-//       display: block;
-//       .logo-lft {
-//         text-align: center;
-//       }
-//       .logo-rgt {
-//         border: none;
-//         display: none;
-//       }
-//     }
+// >>>> Media-query for navigation-bar >>>>
+@media only screen and (max-width: 771px) {
+    .nav-container {
+      height: 30vh;
+      display: block;
+      .logo-lft {
+        text-align: $centerText;
+      }
+      .logo-rgt {
+        border: none;
+        display: none;
+      }
+    }
+    .nav-menu .nav-lists {
+      @include flexDisplay(flex, center, center, column);
+      .item a {
+        display: block;
+        margin: 0;
+        padding: 5px;
+        width: 100%;
+        &:hover {
+          color: $colorMain;
+        }
+      }
+    }
+  }
+// >>>>navigation mdq bar ends here >>>>  
 
-//     .nav-menu .nav-lists {
-//       @include flexDisplay(flex, center, center, column);
+// >>>> main section Media-query starts from here >>>>
 
-//       .item a {
-//         display: block;
-//         padding: 5px;
-//         width: 100%;
-//         margin: 0;
-//         &:hover {
-//           color: $colorMain;
-//         }
-//       }
-//     }
-//   }
+@media screen and (max-width: 768px) {
+    .big-eclipse,
+    .mid-eclipse {
+      display: none;
+    }
+    .profile-image {
+      width: 100%;
+      height: 400px;
+      filter: none;
+    }
+  
+    .wrapper {
+      display: none;
+    }
+  
+    .aside-text-left {
+      color: #555;
+      @include position(absolute,$top: 10rem, $left:0);
+      writing-mode: vertical-lr;
+      p {
+        margin: 0;
+      }
+    }
+  
+    .aside-text-right {
+      bottom: 35rem;
+      color: #555;
+      @include position(absolute,$right:0);
+      writing-mode: vertical-rl;
+      & p {
+        margin: 0;
+      }
+    }
+    .grid-feature {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    h1 {
+      margin: 30px 0 0;
+      color: $headingsColor;
+      font-size: 3rem;
+    }
+    h2,
+    h3,
+    h4 {
+      color: $headingsColor;
+      font-family: $secondary-font;
+      font-size: 2rem;
+      line-height: 1.2;
+      margin: 20px 0 20px;
+    }
+    p {
+      color: $textColor;
+      font-size: 1, 3;
+      line-height: 1.4;
+      margin-top: 0;
+    }
+    .cards {
+      @include flexDisplay(flex, center,$direction: column);
+  
+      height: 100%;
+      .card {
+        margin: 0 0 20px 0;
+        width: 100%;
+      }
+    }
+    .title-header {
+      text-align: left;
+    }
+  
+    .link-arrow {
+      font-size: 1.8rem;
+    }
+    .input-group {
+      border: 1px solid #ccc;
+      border-radius: 30px;
+      @include flexDisplay(flex);
+      background: #fff;
+      width: 80%;
+      .input {
+        width: 100%;
+      }
+    }
+    .grid--1x2 {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  
+    .video-container {
+      height: 100%;
+      width: 100%;
+      overflow: visible;
+    }
+  
+    .objectives {
+      margin-top: 3rem;
+    }
+    .video-container {
+      height: 100%;
+      > video {
+        width: 100%;
+        height: 100%;
+        filter: brightness(60%);
+      }
+    }
+  
+    .quote__text {
+      font-size: 1.6rem;
+    }
+  
+    .media__company {
+      font-size: 1.4rem;
+    }
+  }
+//  >>>> Media-query Main-section ends here >>>>
+
+// >>>> Media-query Footer starts from here >>>>
+@media screen and (max-width: 768px) {
+    .footer-container {
+        display: block;
+       
+      }
+    
+      .logo-footer {
+        display: none;
+      }
+
+      .footer-btn {
+        margin: 0.2rem 1rem;
+      }
+
+      .dropdown {
+        margin-top: 1rem;
+      }
+    
+      .contact li {
+        width: 50px;
+      }
+    .coder {
+      margin-bottom: 7rem;
+    }
+    .connect {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 9rem;
+    }
+    .wrapper-footer {
+      padding: 0;
+      margin: 0;
+    }
+}
+
+// >>>> Footer mdq ends here >>>>

@@ -1,28 +1,28 @@
+
+// >>>> Universal Box-Sizing settings >>>>
 *,
 *::after,
 *::before {
   box-sizing: border-box;
 }
 
-// >>>>>  Typography >>>>>
-
+// >>>>>  Typography for Body's styling  >>>>>
 html {
   /* 62.5% of 16px = 10px */
   font-size: 62.5%;
 }
 
 body {
-  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-family: $primary-font;
   font-size: 1.6rem;
   width: 90vw;
   margin: auto;
   line-height: 1.2;
-  background: rgb(32, 32, 32);
+  background: $bodycolor;
   color: $textColor;
 }
-
 h1 {
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-family: $secondary-font;
   margin: 30px 0 0;
   color: $headingsColor;
   font-size: 4rem;
@@ -30,16 +30,16 @@ h1 {
 h2,
 h3,
 h4 {
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-family: $secondary-font;
   margin: 20px 0 20px;
   color: $headingsColor;
   font-size: 3rem;
-  line-height: 1.2;
+  line-height: (0.2 + 1);
 }
 p {
   margin-top: 0;
   color: $textColor;
-  line-height: 1.4;
+  line-height: (0.4 + 1);
 }
 a {
   text-decoration: none;
@@ -48,3 +48,4 @@ a {
 li {
   list-style: none;
 }
+// >>>>> typography section ends here >>>>

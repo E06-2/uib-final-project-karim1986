@@ -1,81 +1,46 @@
-@mixin BackgroundImage(
-  $backRepeat,
-  $backPosition,
-  $backSize,
-  $backAttachement
-) {
-  background-repeat: $backRepeat;
-  background-position: $backPosition;
-  background-size: $backSize;
-  background-attachment: $backAttachement;
-}
-
-// >>>>> Main section styling >>>>>
-
+// >>>>>>>>>> Main section styling starts from here >>>>>>>>>
+// >>>> Section One styling>>>>>
+// >> Profile and image starts from here >>
 .profile {
-  position: relative;
   height: 80vh;
+  @include position(relative);
   white-space: nowrap;
   .profile-image {
+    box-shadow: 0px 10px 9px -3px #fd9a3dea;
+    @include elementDisplay(block);
+    filter: opacity(80%);
     height: 100%;
-    display: block;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0px 10px 9px -3px #fd9a3dea;
-    filter: opacity(80%);
   }
 }
-
+// >> paragraph left and right positioning and writing-mode settings >>
 .aside-text-left {
-  position: absolute;
-  left: 0;
-  top: 20rem;
-  writing-mode: vertical-lr;
   color: #b0a180;
+  @include position(absolute, $top: 20rem, $left: 0);
+  writing-mode: vertical-lr;
   > p {
     margin: 0;
   }
 }
-
 .aside-text-right {
-  position: absolute;
-  writing-mode: vertical-rl;
-  right: 0;
   bottom: 35rem;
   color: #b0a180;
+  @include position(absolute,$right: 0);
+  writing-mode: vertical-rl;
   & p {
     margin: 0;
   }
 }
-
-.big-eclipse {
-  width: 800px;
-  position: absolute;
-  right: 0;
-  top: -100px;
-  z-index: -1;
-  height: 100%;
-}
-
-.mid-eclipse {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  z-index: -1;
-  height: 100%;
-}
-
+// >> Text annimation "I am a Dev...." section settings starts rome here >>
 .wrapper {
-  display: inline-flex;
-  position: absolute;
-  left: 33rem;
+  @include elementDisplay(inline-flex);
+  @include position(absolute, $left: 33rem);
   bottom: 37rem;
-
   .static-text {
     font-size: 6rem;
     color: $textColor;
   }
-
   .dynamic-text {
     margin-left: 15px;
     margin: 0;
@@ -83,20 +48,18 @@
     line-height: 87px;
     overflow: hidden;
     & li {
-      position: relative;
+      @include position(relative, $top: 0);
       font-size: 6rem;
       color: $colorMain;
-      top: 0;
       animation: slide 6s steps(4) infinite;
       & span::after {
+        animation: typing 1.5s steps(10) infinite;
+        background: rgb(32, 32, 32);
+        border-left: 2px solid $colorMain;
         content: "";
         height: 100%;
+        @include position(absolute, $left: 0);
         width: 100%;
-        border-left: 2px solid $colorMain;
-        position: absolute;
-        background: rgb(32, 32, 32);
-        left: 0;
-        animation: typing 1.5s steps(10) infinite;
       }
       @keyframes typing {
         100% {
@@ -112,31 +75,31 @@
     }
   }
 }
+// >>>> Section one Styling ends here >>>>
 
-// >>>>> section two styling >>>>>
+// >>>> section two styling starts from here >>>>
+// >> Grid section 2-col >>
 .grid-feature {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 4rem;
-
   .image_feat {
     width: 100%;
     height: 400px;
     object-fit: cover;
   }
-
+//>> SVG Icon styling >>
   .icon-container {
-    width: 64px;
-    height: 64px;
+    @include flexDisplay(flex, center, center);
     border-radius: 100%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    @include elementDisplay(inline-flex);
+    height: 64px;
+    width: 64px;
   }
-
+// >> Link-arrow styling >> 
   .link-arrow {
     color: #d60032;
-    text-transform: uppercase;
+    text-transform: $upper;
     font-weight: 600;
     font-size: 2rem;
     transition: 0.2s;
@@ -149,23 +112,28 @@
     }
   }
 }
+// >>>> Section Two styling ends here >>>>
 
+// >>>> Section Three styling starts from here >>>>
 .main-title {
-  text-align: center;
+  text-align: $centerText;
   margin: 5rem 0;
   .title-header {
     font-weight: 300;
     margin: 20px 0;
   }
+}
+// >> button styling >>
   .btn {
+    border-radius: 40px;
+    border: 0;
     font-size: 1.8rem;
     font-weight: 600;
-    text-transform: uppercase;
+    margin-bottom: 0;
     padding: 2rem 3rem;
-    border: 0;
-    border-radius: 40px;
+    text-align: $centerText;
+    text-transform: $upper;
     white-space: nowrap;
-    text-align: center;
   }
   .btn--primary {
     background: #d60032;
@@ -175,15 +143,13 @@
       cursor: pointer;
     }
   }
-}
-
+// >> input Group >>
 .input {
-  padding: 1.5rem 3.5rem;
-  border: 1px solid #ccc;
   border-radius: 30px;
+  border: 1px solid #ccc;
   outline: 0;
+  padding: 1.5rem 3.5rem;
 }
-
 .input-group {
   border: 1px solid #ccc;
   border-radius: 30px;
@@ -191,111 +157,116 @@
   background: #fff;
   width: 600px;
   margin: auto;
-
   .input {
     border: 0;
     flex: 1;
   }
 }
-
-// >>>>> styling section three >>>>
-
+// >> Cards stylings  >>
 .cards {
-  display: flex;
-
+  @include flexDisplay(flex);
   .card {
-    width: 50%;
+    border-radius: 7px;
     border: 1px solid rgb(163, 163, 163);
     margin: 0 10px 0;
-    border-radius: 7px;
     overflow: hidden;
-
+    width: 50%;
+  }
     .card__image {
       width: 100%;
       object-fit: cover;
       height: 200px;
     }
+  // >> cards buttons settings >>
     .btn-center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flexDisplay(flex, center, center );
     }
     .btn {
-      font-size: 1.8rem;
-      text-transform: uppercase;
-      padding: 1.5rem 5rem;
-      border: $borderLine;
-      border-radius: 40px;
       background: none;
+      border-radius: 40px;
+      border: $borderLine;
       color: $textColor;
+      font-size: 1.8rem;
       margin-bottom: 20px;
-
+      padding: 1.5rem 5rem;
+      text-transform: $upper;
       &:hover {
         background-color: lighten(#d60032, 10%);
         cursor: pointer;
       }
-
       .btn-title {
         color: $textColor;
         font-weight: bold;
       }
     }
-  }
+  // >> card text >>
   .course__intro {
-    text-align: center;
+    text-align: $centerText;
     font-weight: 100;
-    text-transform: uppercase;
+    text-transform: $upper;
   }
   .card__body {
-    text-align: center;
+    text-align: $centerText;
     margin-bottom: 40px;
     color: #666;
   }
 }
+// >>>> Section Three stylings ends here >>>>
 
-// Section Three Styling
+// >>>> section Four stylings stars from here >>>>
+// >> Section Title >>
+.objectives {
+  margin-top: 3rem;
+  max-height: 600px;
+}
+.video-container {
+  overflow: hidden;
+  height: 500px;
+  > video {
+    min-width: 100%;
+    min-height: 100%;
+    filter: brightness(60%);
+  }
+}
+
+// >>>> Section Five Styling >>>>
+// >> Testimonial >>
 .testimonial {
   padding: 3rem;
   box-shadow: 1px 1px 10px 1px #ebe8e8;
 }
-
-// testimonial styling
-
+// >> grid col-2 >>
 .grid--1x2 {
   display: grid;
   grid-template-columns: repeat(1, 1fr 1fr);
 }
+// >> test. image >>>
 .testimonial__image {
-  position: relative;
+  @include position(relative);
   > img {
     width: 100%;
   }
   > .icon-container {
-    position: absolute;
-    top: 3rem;
-    right: -32px;
+    @include position(absolute, $top:3rem, $right:-32px);
   }
 }
-
+// >> SVG icon >>
 .icon-container-style {
+  @include flexDisplay(inline-flex, center, center);
   background: #d60032;
-  width: 64px;
-  height: 64px;
   border-radius: 100%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  height: 64px;
+  width: 64px;
   .icon-color {
     fill: $textColor;
   }
 }
 
-// Quotes styling
+// >> Quotes styling >>
 .quote {
   font-size: 3rem;
   font-style: italic;
   line-height: 1.3;
-
   .quote__text::before {
     content: open-quote;
     margin-right: 5px;
@@ -304,17 +275,14 @@
     content: close-quote;
     margin-left: 5px;
   }
-
   .media {
-    display: flex;
+    @include flexDisplay(flex);
   }
-
   .media__title {
     margin-top: 0;
     font-style: normal;
     font-weight: 500;
   }
-
   .media__body {
     margin: 0 2rem;
   }
@@ -323,204 +291,6 @@
     opacity: 0.5;
   }
 }
+// >>>>>>>>> Main Section Styling Ends here >>>>>>
 
-// Footer styling
 
-.footer-container {
-  position: relative;
-  border: 1px solid #fff;
-  height: 70vh;
-  display: flex;
-  align-items: center;
-  background: #fff;
-
-  .dropdown {
-    width: 80%;
-    margin: auto;
-    display: flex;
-    justify-content: space-evenly;
-    align-content: center;
-
-    .sitemap {
-      @extend .socials;
-    }
-
-    .socials {
-      position: relative;
-      ul {
-        position: absolute;
-        left: 0;
-        padding: 0;
-        width: 200px;
-        height: 200px;
-        background: #fff;
-        display: flex;
-        justify-content: space-around;
-        align-content: center;
-        flex-direction: column;
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(10px);
-        transition: all 0.4s ease;
-      }
-      .footer-btn:focus + ul {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
-
-    .contact {
-      @extend .socials;
-    }
-    .logo-footer {
-      .writing-mode-text {
-        margin: 0;
-        writing-mode: vertical-lr;
-        color: rgb(32, 32, 32);
-      }
-    }
-  }
-
-  .footer-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    font-size: 2rem;
-    font-weight: 700;
-    color: $colorMain;
-    text-transform: uppercase;
-    &:hover {
-      color: #a84e00;
-      cursor: pointer;
-    }
-  }
-}
-
-.coder {
-  width: 90%;
-  position: absolute;
-  bottom: 2rem;
-  left: 5rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  .code-image {
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  .coder-profile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .coder-text {
-      margin-left: 1rem;
-      color: rgb(32, 32, 32);
-      font-size: 2rem;
-    }
-  }
-}
-
-// media query for the main section
-@media screen and (max-width: 768px) {
-  .big-eclipse,
-  .mid-eclipse {
-    display: none;
-  }
-  .profile-image {
-    width: 100%;
-    height: 400px;
-    filter: none;
-  }
-
-  .wrapper {
-    display: none;
-  }
-
-  .aside-text-left {
-    position: absolute;
-    left: 0;
-    top: 10rem;
-    writing-mode: vertical-lr;
-    color: #555;
-    p {
-      margin: 0;
-    }
-  }
-
-  .aside-text-right {
-    position: absolute;
-    writing-mode: vertical-rl;
-    right: 0;
-    bottom: 35rem;
-    color: #555;
-    & p {
-      margin: 0;
-    }
-  }
-  .grid-feature {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  h1 {
-    margin: 30px 0 0;
-    color: $headingsColor;
-    font-size: 3rem;
-  }
-  h2,
-  h3,
-  h4 {
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
-    margin: 20px 0 20px;
-    color: $headingsColor;
-    font-size: 2rem;
-    line-height: 1.2;
-  }
-  p {
-    font-size: 1, 3;
-    margin-top: 0;
-    color: $textColor;
-    line-height: 1.4;
-  }
-  .cards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    height: 100%;
-    .card {
-      margin: 0 0 20px 0;
-      width: 100%;
-    }
-  }
-  .title-header {
-    text-align: left;
-  }
-
-  .link-arrow {
-    font-size: 1.8rem;
-  }
-  .input-group {
-    border: 1px solid #ccc;
-    border-radius: 30px;
-    display: flex;
-    background: #fff;
-    width: 80%;
-    .input {
-      width: 100%;
-    }
-  }
-  .grid--1x2 {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .quote__text {
-    font-size: 1.6rem;
-  }
-
-  .media__company {
-    font-size: 1.4rem;
-  }
-}
